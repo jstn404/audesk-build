@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block title %}Chatbot{% endblock %}
+
+{% block content %}
+<style>
+    html, h3 {
+        color: #DCDCDC;
+        scrollbar-width: none;
+    }
+    p, div{
+        color: #C0C0C0;
+    }
+
+    body{
+        background: linear-gradient(135deg, #101010, #202020);
+    }
+    #chatbox{
+        background: linear-gradient(135deg, #181818, #202020);
+    }
+    .form-control{
+        background-color:#181818;
+        color: #F5F5F5;
+    }
+
+    .form-control:focus{
+        background-color:#202020;
+        color: #F5F5F5;
+    }
+
+    .form-control::placeholder {
+        color: #808080;
+    }
+
+    .input{
+        font-style:'Roboto', sans-serif;
+        border-top-left-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+    }
+    .send{
+        border-top-right-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        background-color: #181818;
+    }
+
+    #chatbox {
+        height: 600px;
+        overflow-y: auto;
+        border: none;
+        scrollbar-width: none;
+        scrollbar-color: #ccc #f5f5f5;
+    }
+
+    #chatbox-content{
+        overflow-y: auto;
+        max-height: 600px;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    .user-message,
+    .chatbot-message {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .bold{
+        font-weight:bold;
+    }
+     .chatbot-typing {
+        overflow: hidden;
+    }
+
+    .chatbot-typing span {
+        animation: typing 1s steps(10, end) infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+    .container-fluid{
+        width:800px
+    }
+
+    .border{
+        border: 2px #282828 solid !important;
+    }
+
+    .user-message,
+    .chatbot-message{
+        background-color: #181818;
+    }
+    .icon{
+        width: 70px;
+        padding: 0;
+    }
+
+</style>
+<div class="container-fluid">
+    <h3 class="p-3">AU Desk</h3>
+
+    <div>
+        <div id="chatbox" class="card mb-3 shad">
+                <div class="card-body" id="chatbox-content">
+                    <div class="d-flex justify-content-center mb-4">
+                        /<div id="chatbot-typing" class="chatbot-typing"></div>
+                    </div>
+                </div>
+        </div>
+        <div class="input-group mb-5" style="border: none;">
+            <input type="text" class="form-control border input py-2 px-4" id="user_input" placeholder="Message AU Desk...">
+            <div class="input-group-append">
+                <button class="btn border send" type="button" onclick="send_message()">
+                    <i class="fs-5 bi-caret-right-fill"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function send_message() {
+        var user_input = $("#user_input").val();
+        $("#chatbox-content").append('<div class="row p-1"><div class="text-end"><div class="user-message mb-3"> ' + user_input + '</div></div></div>');
+        $("#user_input").val("");
+
+        $.ajax({
+            type: 'POST',
+            url: '/get_response',
+            contentType: 'application/json',
+            data: JSON.stringify({'user_input': user_input}),
+            success: function(data) {
+                var response = data['response'];
+                $("#chatbox-content").append('<div class="row px-3"><div class="chatbot-message mb-3"> ' + response + '</div></div></div>');
+                $("#chatbox-content").scrollTop($("#chatbox-content")[0].scrollHeight);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    $("#user_input").keypress(function(event) {
+        if (event.which == 13) {
+            send_message();
+        }
+    });
+
+    function showChatbotTyping(message) {
+        var typingDiv = document.getElementById("chatbot-typing");
+        typingDiv.textContent = "";
+        var typingSpan = document.createElement("span");
+        typingDiv.appendChild(typingSpan);
+        var text = message.split('');
+        var index = 0;
+        var isTyping = true;
+        var typingInterval = setInterval(function() {
+            if (index < text.length && isTyping) {
+                typingSpan.textContent += text[index];
+                index++;
+            } else {
+                isTyping = false;
+                var deletingInterval = setInterval(function() {
+                    if (index > 0 && !isTyping) {
+                        index--;
+                        typingSpan.textContent = text.slice(0, index).join('');
+                    } else {
+                        isTyping = true;
+                        clearInterval(deletingInterval);
+                    }
+                }, 100);
+            }
+        }, 100);
+    }
+
+    // Usage example: Call this function when you want to show the chatbot's response
+    showChatbotTyping("How can I help you today?");
+</script>
+{% endblock %}
