@@ -1,10 +1,13 @@
 {
     "hello": "Hello! How can I help you?",
-    "hi": "Hello! How can I help you?",
     "how are you": "I'm just a chatbot, but thanks for asking!",
     "bye": "Goodbye! Have a great day!",
     "what is bsit": "\"BSIT\" stands for \"Bachelor of Science in Information Technology.\" It is an undergraduate degree program that focuses on the study of computer systems, software applications, programming languages, network security, database management, and more. Students pursuing a BSIT degree typically learn the fundamentals of information technology and how to apply technology solutions to solve real-world problems in various industries. This degree prepares students for careers in IT-related fields such as software development, IT consulting, network administration, cybersecurity, database management, and more.",
     "define bsit": "\"BSIT\" stands for \"Bachelor of Science in Information Technology.\" It is an undergraduate degree program that focuses on the study of computer systems, software applications, programming languages, network security, database management, and more. Students pursuing a BSIT degree typically learn the fundamentals of information technology and how to apply technology solutions to solve real-world problems in various industries. This degree prepares students for careers in IT-related fields such as software development, IT consulting, network administration, cybersecurity, database management, and more.",
+    "list scholarship": "Hawak-kamay or HK and etc. You can visit facebook page for more info.",
+    "scholarship available": "The available scholarship are Hawak-kamay and etc. You can visit facebook page for more info.",
+    "apply": "You can apply for HK scholarship, go to <a href=\"https://phinma-23236817.hs-sites.com/phinmaau-all-new-hk-0\" target=\"_blank\">this website</a> and fill out the information. You can also apply onsite by visiting Phinma Araullo South Campus - CSDL Office.",
+    "get": "You can apply for HK scholarship, go to <a href=\"https://phinma-23236817.hs-sites.com/phinmaau-all-new-hk-0\" target=\"_blank\">this website</a> and fill out the information. You can also apply onsite by visiting Phinma Araullo South Campus - CSDL Office.",
     "courses": [
         "We offer a variety of courses for college students, each designed to provide a strong foundation in their respective fields. Here are some of the courses available at our university:",
         "<ul>",
@@ -51,9 +54,9 @@
         "<li>Birth certificate</li>",
         "<li>Passport-sized photos</li>",
         "<li>Any other documents specified by the university</li>",
-        "</ul>",
-        "The campus you will go depends on the course or program that you choose. Notes, not all campuses offer the same program.",
-        "To enroll online, you can visit our facebook page and find a post about enrollment or message the page directly."
+        "<li>The campus you will go depends on the course or program that you choose. Notes, not all campuses offer the same program.</li>",
+        "<li>To enroll online, you can visit our facebook page and find a post about enrollment or message the page directly.</li>",
+        "</ul>"
     ],
     "requirements to enroll": [
         "The necessary documents needed for enrollment. These may include:",
@@ -91,29 +94,8 @@
         "</ul>",
         "The campus you will go depends on the course or program that you choose. Notes, not all campuses offer the same program."
     ],
-    "apply scholarship": [
-        "You can apply for HK scholarship, go to <a href=\"https://phinma-23236817.hs-sites.com/phinmaau-all-new-hk-0\" target=\"_blank\">this website</a> and fill out the information. You can also apply onsite by visiting Phinma Araullo South Campus - CSDL Office."
-    ],
-    "get scholarship": [
-        "You can apply for HK scholarship, go to <a href=\"https://phinma-23236817.hs-sites.com/phinmaau-all-new-hk-0\" target=\"_blank\">this website</a> and fill out the information. You can also apply onsite by visiting Phinma Araullo South Campus - CSDL Office."
-    ],
-    "enroll online": [
+    "online": [
         "Visit the facebook page and find the online enrollment form for freshman and students. for full details \"How to enroll online?\""
-    ],
-    "online enroll": [
-        "Visit the facebook page and find the online enrollment form for freshman and students. for full details \"How to enroll online?\""
-    ],
-    "online enrollment": [
-        "Visit the facebook page and find the online enrollment form for freshman and students. for full details \"How to enroll online?\""
-    ],
-    "list scholarship": [
-        "Hawak-kamay scholarship and etc. You can visit facebook page for more info."
-    ],
-    "scholarship available": [
-        "Hawak-kamay scholarship and etc. You can visit facebook page for more info."
-    ],
-    "what are the scholarship": [
-        "Hawak-kamay scholarship and etc. You can visit facebook page for more info."
     ],
     "hk": [
         "The \"Hawak Kamay Scholarship\" is a program offered by PHINMA Araullo University (PAU) in the Philippines. The term \"Hawak Kamay\" translates to \"holding hands\" in English, which symbolizes the university's commitment to supporting students who may be facing financial challenges in pursuing their education. This scholarship aims to provide financial assistance to deserving students to help them achieve their academic goals.",

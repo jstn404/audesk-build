@@ -127,25 +127,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     function send_message() {
+        // Get user input
         var user_input = $("#user_input").val();
-        $("#chatbox-content").append('<div class="row p-1"><div class="text-end"><div class="user-message mb-3"> ' + user_input + '</div></div></div>');
+
+        // Append user message to chatbox
+        var user_message = '<div class="row p-1"><div class="text-end"><div class="user-message mb-3">' + user_input + '</div></div></div>';
+        $("#chatbox-content").append(user_message);
+
+        // Clear user input field
         $("#user_input").val("");
 
+        // Send user input to server and get response
         $.ajax({
             type: 'POST',
             url: '/get_response',
             contentType: 'application/json',
             data: JSON.stringify({'user_input': user_input}),
             success: function(data) {
+                // Append chatbot response to chatbox
                 var response = data['response'];
-                $("#chatbox-content").append('<div class="row px-3"><div class="chatbot-message mb-3"> ' + response + '</div></div></div>');
+                var chatbot_message = '<div class="row px-3"><div class="chatbot-message mb-3">' + response + '</div></div>';
+                $("#chatbox-content").append(chatbot_message);
+
+                // Scroll to the bottom of chatbox
                 $("#chatbox-content").scrollTop($("#chatbox-content")[0].scrollHeight);
             },
             error: function(xhr, status, error) {
+                // Handle errors
                 console.error('Error:', error);
             }
         });
     }
+
 
     $("#user_input").keypress(function(event) {
         if (event.which == 13) {
